@@ -26,6 +26,16 @@ loginForm.addEventListener('submit', (e) => {
     console.error(error);
   });
 });
+
+function createUser(email, password) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+    // Clear form
+    signupForm.reset();
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
 const signUpButton = document.querySelector('#signup-button');
 
 signUpButton.addEventListener('click', (e) => {
