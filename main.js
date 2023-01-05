@@ -4,9 +4,10 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 const database = firebase.database();
 
-// Get form element
+// Get form elements
 const loginForm = document.querySelector('#login-form');
 const uploadForm = document.querySelector('#upload-form');
+const signupForm = document.querySelector('#signup-form');
 
 // Add submit event for login form
 loginForm.addEventListener('submit', (e) => {
@@ -20,27 +21,27 @@ loginForm.addEventListener('submit', (e) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
     // Close login modal
     loginForm.reset();
-    loginForm.style.display = 'none';
-    uploadForm.style.display = 'block';
   }).catch((error) => {
     console.error(error);
   });
 });
 
-function createUser(email, password) {
+// Add submit event for signup form
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Get email and password values
+  const email = signupForm['signup-email'].value;
+  const password = signupForm['signup-password'].value;
+
+  // Create user
   firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-    // Clear form
+    // Close signup modal
     signupForm.reset();
   }).catch((error) => {
     console.error(error);
   });
-}
-
-const signUpButton = document.querySelector('#signup-button');
-
-signUpButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.location = 'signup.html';
+});
 
 // Add submit event for upload form
 uploadForm.addEventListener('submit', (e) => {
@@ -73,16 +74,3 @@ function addPostToDatabase(imageUrl, caption) {
   updates[`/posts/${newPostKey}`] = post;
   return database.ref().update(updates);
 }
-
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in.
-    loginForm.style.display = 'none';
-    uploadForm.style.display = 'block';
-  } else {
-    // User is signed out.
-    loginForm.style.display = 'block';
-    uploadForm.style.display = 'none';
-  }
-});
-
