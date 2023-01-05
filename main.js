@@ -4,10 +4,9 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 const database = firebase.database();
 
-// Get form elements
+// Get form element
 const loginForm = document.querySelector('#login-form');
 const uploadForm = document.querySelector('#upload-form');
-const signupForm = document.querySelector('#signup-form');
 
 // Add submit event for login form
 loginForm.addEventListener('submit', (e) => {
@@ -21,23 +20,6 @@ loginForm.addEventListener('submit', (e) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
     // Close login modal
     loginForm.reset();
-  }).catch((error) => {
-    console.error(error);
-  });
-});
-
-// Add submit event for signup form
-signupForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  // Get email and password values
-  const email = signupForm['signup-email'].value;
-  const password = signupForm['signup-password'].value;
-
-  // Create user
-  firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-    // Close signup modal
-    signupForm.reset();
   }).catch((error) => {
     console.error(error);
   });
@@ -73,4 +55,9 @@ function addPostToDatabase(imageUrl, caption) {
   const updates = {};
   updates[`/posts/${newPostKey}`] = post;
   return database.ref().update(updates);
+}
+
+// Redirect to sign up page
+function redirectToSignUp() {
+  window.location.href = "signup.html";
 }
