@@ -26,6 +26,11 @@ loginForm.addEventListener('submit', (e) => {
     console.error(error);
   });
 });
+const signUpButton = document.querySelector('#signup-button');
+
+signUpButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location = 'signup.html';
 
 // Add submit event for upload form
 uploadForm.addEventListener('submit', (e) => {
