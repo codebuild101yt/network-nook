@@ -1,12 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>The Network Nook</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
 <body>
   <h1>The Network Nook</h1>
-  
+
   <form id="login-form" action="javascript:void(0);">
     <label for="login-email">Email:</label><br>
     <input type="email" id="login-email" name="login-email"><br>
     <label for="login-password">Password:</label><br>
     <input type="password" id="login-password" name="login-password"><br><br>
-    <button type="submit">Sign In</button>
+    <button type="submit">Log In</button>
   </form>
 
   <div id="posts"></div>
@@ -23,5 +31,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
   <script src="config.js"></script>
   <script src="realtime-listener.js"></script>
-  <script src="add-post.js"></script>
+  <script src="main.js"></script>
 </body>
+</html>
