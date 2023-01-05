@@ -8,29 +8,32 @@
 </head>
 <body>
   <h1>The Network Nook</h1>
-
-  <form id="login-form" action="javascript:void(0);">
-    <label for="login-email">Email:</label><br>
-    <input type="email" id="login-email" name="login-email"><br>
-    <label for="login-password">Password:</label><br>
-    <input type="password" id="login-password" name="login-password"><br><br>
-    <button type="submit">Log In</button>
-  </form>
-
+  <div id="sign-in-form">
+    <form id="login-form" action="javascript:void(0);">
+      <label for="login-email">Email:</label><br>
+      <input type="text" id="login-email" name="login-email"><br>
+      <label for="login-password">Password:</label><br>
+      <input type="password" id="login-password" name="login-password"><br><br>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
   <div id="posts"></div>
-
-  <form id="upload-form" action="javascript:void(0);">
-    <label for="image-url">Image URL:</label><br>
-    <input type="text" id="image-url" name="image-url"><br>
-    <label for="caption">Caption:</label><br>
-    <input type="text" id="caption" name="caption"><br><br>
-    <button type="submit">Post</button>
-  </form>
-
+  <div id="upload-form-container" style="display:none;">
+    <form id="upload-form" action="javascript:void(0);">
+      <label for="image-url">Image URL:</label><br>
+      <input type="text" id="image-url" name="image-url"><br>
+      <label for="caption">Caption:</label><br>
+      <input type="text" id="caption" name="caption"><br><br>
+      <button type="submit">Post</button>
+    </form>
+  </div>
   <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
   <script src="config.js"></script>
   <script src="realtime-listener.js"></script>
+  <script src="add-post.js"></script>
   <script src="main.js"></script>
 </body>
+</html>
+
 </html>
